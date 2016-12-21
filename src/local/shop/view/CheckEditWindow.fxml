@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="local.shop.controller.CheckEditController">
+   <children>
+      <TableView fx:id="checkItems" layoutX="15.0" layoutY="11.0" prefHeight="581.0" prefWidth="594.0">
+        <columns>
+          <TableColumn fx:id="id" prefWidth="55.0" text="ID" />
+          <TableColumn fx:id="name" prefWidth="377.0" text="Название" />
+            <TableColumn fx:id="count" prefWidth="67.0" text="Кол-во" />
+            <TableColumn fx:id="price" prefWidth="94.0" text="Цена за 1" />
+        </columns>
+      </TableView>
+      <Label layoutX="620.0" layoutY="13.0" prefHeight="24.0" prefWidth="100.0" text="Сумма чека:">
+         <font>
+            <Font name="Segoe UI" size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="sumLabel" layoutX="620.0" layoutY="37.0" prefHeight="15.0" prefWidth="76.0" text="sumLabel" textFill="#d70404">
+         <font>
+            <Font name="Segoe UI" size="13.0" />
+         </font>
+      </Label>
+      <Button layoutX="620.0" layoutY="102.0" mnemonicParsing="false" onAction="#incItem" prefHeight="25.0" prefWidth="26.0" text="+" />
+      <Button layoutX="658.0" layoutY="102.0" mnemonicParsing="false" onAction="#decItem" prefHeight="25.0" prefWidth="29.0" text="-" />
+      <Button layoutX="618.0" layoutY="209.0" mnemonicParsing="false" onAction="#applyChanges" prefHeight="27.0" prefWidth="81.0" text="Сохранить">
+         <font>
+            <Font name="Segoe UI" size="13.0" />
+         </font>
+      </Button>
+      <Button layoutX="618.0" layoutY="249.0" mnemonicParsing="false" onAction="#cancelChanges" prefHeight="27.0" prefWidth="81.0" text="Отменить">
+         <font>
+            <Font name="Segoe UI" size="13.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

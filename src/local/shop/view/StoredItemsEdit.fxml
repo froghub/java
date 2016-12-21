@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1250.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="local.shop.controller.StoredItemsEditController">
+   <children>
+      <TextField fx:id="fId" editable="false" layoutX="889.0" layoutY="64.0" prefHeight="25.0" prefWidth="83.0">
+         <font>
+            <Font name="Segoe UI" size="13.0" />
+         </font></TextField>
+      <TextField fx:id="fName" layoutX="889.0" layoutY="116.0">
+         <font>
+            <Font name="Segoe UI" size="13.0" />
+         </font></TextField>
+      <TextField fx:id="fPrice" layoutX="889.0" layoutY="166.0">
+         <font>
+            <Font name="Segoe UI" size="13.0" />
+         </font></TextField>
+      <TextField fx:id="fCount" layoutX="889.0" layoutY="217.0">
+         <font>
+            <Font name="Segoe UI" size="13.0" />
+         </font></TextField>
+      <Label layoutX="889.0" layoutY="19.0" text="Редактирование:">
+         <font>
+            <Font name="Segoe UI" size="13.0" />
+         </font></Label>
+      <Label layoutX="889.0" layoutY="47.0" text="ID">
+         <font>
+            <Font name="Segoe UI" size="13.0" />
+         </font></Label>
+      <Label layoutX="889.0" layoutY="99.0" text="Наименование">
+         <font>
+            <Font name="Segoe UI" size="13.0" />
+         </font></Label>
+      <Label layoutX="891.0" layoutY="149.0" prefHeight="17.0" prefWidth="36.0" text="Цена">
+         <font>
+            <Font name="Segoe UI" size="13.0" />
+         </font></Label>
+      <Label layoutX="890.0" layoutY="200.0" prefHeight="17.0" prefWidth="70.0" text="Количество">
+         <font>
+            <Font name="Segoe UI" size="13.0" />
+         </font></Label>
+      <Button layoutX="890.0" layoutY="267.0" mnemonicParsing="false" onAction="#saveChanges" text="Изменить">
+         <font>
+            <Font name="Segoe UI" size="13.0" />
+         </font></Button>
+      <Button layoutX="982.0" layoutY="267.0" mnemonicParsing="false" onAction="#addNew" text="Добавить">
+         <font>
+            <Font name="Segoe UI" size="13.0" />
+         </font></Button>
+      <Button layoutX="1125.0" layoutY="22.0" mnemonicParsing="false" onAction="#loadList" prefHeight="53.0" prefWidth="108.0" text="Загрузить список" textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font name="Segoe UI" size="13.0" />
+         </font>
+      </Button>
+      <Label fx:id="errLabel" layoutX="889.0" layoutY="313.0" prefHeight="15.0" prefWidth="168.0" textFill="#e80202">
+         <font>
+            <Font name="Segoe UI" size="13.0" />
+         </font>
+      </Label>
+      <TableView fx:id="items" layoutX="45.0" layoutY="21.0" onMouseClicked="#selectItem" prefHeight="562.0" prefWidth="807.0">
+        <columns>
+          <TableColumn fx:id="tId" prefWidth="60.0" text="ID" />
+          <TableColumn fx:id="tName" prefWidth="553.0" text="Наименование" />
+            <TableColumn fx:id="tPrice" minWidth="0.0" prefWidth="109.0" text="Цена" />
+            <TableColumn fx:id="tCount" minWidth="0.0" prefWidth="74.0" text="Кол-во" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

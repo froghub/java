@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="320.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="local.shop.controller.SearchItemController">
+   <children>
+      <TextField fx:id="searchText" layoutX="28.0" layoutY="31.0" onAction="#search" prefHeight="25.0" prefWidth="270.0">
+         <font>
+            <Font name="Segoe UI" size="13.0" />
+         </font></TextField>
+      <Label layoutX="28.0" layoutY="14.0" text="Наименование:">
+         <font>
+            <Font name="Segoe UI" size="13.0" />
+         </font></Label>
+      <Button layoutX="309.0" layoutY="31.0" mnemonicParsing="false" onAction="#search" text="Найти">
+         <font>
+            <Font name="Segoe UI" size="13.0" />
+         </font></Button>
+      <TableView fx:id="items" layoutX="28.0" layoutY="71.0" prefHeight="200.0" prefWidth="530.0">
+        <columns>
+          <TableColumn fx:id="id" prefWidth="44.0" text="ID" />
+          <TableColumn fx:id="name" prefWidth="373.0" text="Наименование" />
+            <TableColumn fx:id="price" prefWidth="58.0" text="Цена" />
+            <TableColumn fx:id="countStored" prefWidth="54.0" text="Остаток" />
+        </columns>
+      </TableView>
+      <Button layoutX="482.0" layoutY="275.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addToCheck" prefHeight="27.0" prefWidth="76.0" text="Добавить">
+         <font>
+            <Font name="Segoe UI" size="13.0" />
+         </font></Button>
+      <Label fx:id="labelSearchResult" layoutX="381.0" layoutY="35.0" prefHeight="17.0" prefWidth="102.0" text="Найдено:">
+         <font>
+            <Font name="Segoe UI" size="13.0" />
+         </font></Label>
+      <Label fx:id="labelConfirm" layoutX="291.0" layoutY="279.0" prefHeight="17.0" prefWidth="172.0">
+         <font>
+            <Font name="Segoe UI" size="13.0" />
+         </font></Label>
+      <TextField fx:id="addCount" editable="false" layoutX="28.0" layoutY="275.0" prefHeight="17.0" prefWidth="50.0">
+         <font>
+            <Font name="Segoe UI" size="13.0" />
+         </font></TextField>
+      <Button layoutX="78.0" layoutY="275.0" mnemonicParsing="false" onAction="#incAddCount" prefHeight="25.0" prefWidth="27.0" text="+">
+         <font>
+            <Font name="Segoe UI" size="13.0" />
+         </font></Button>
+      <Button layoutX="105.0" layoutY="275.0" mnemonicParsing="false" onAction="#decAddCount" prefHeight="25.0" prefWidth="27.0" text="-">
+         <font>
+            <Font name="Segoe UI" size="13.0" />
+         </font></Button>
+   </children>
+</AnchorPane>

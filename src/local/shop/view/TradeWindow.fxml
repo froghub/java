@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1250.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="local.shop.controller.TradeWindowController">
+   <children>
+      <TableView fx:id="items" editable="true" layoutX="164.0" layoutY="47.0" prefHeight="360.0" prefWidth="622.0" AnchorPane.rightAnchor="14.0">
+        <columns>
+          <TableColumn fx:id="id" prefWidth="61.0" text="ID" />
+          <TableColumn fx:id="name" prefWidth="423.0" text="Наименование" />
+            <TableColumn fx:id="count" prefWidth="58.0" text="Кол-во" />
+            <TableColumn fx:id="price" prefWidth="78.0" text="Цена" />
+        </columns>
+      </TableView>
+      <Button layoutX="39.0" layoutY="536.0" mnemonicParsing="false" onAction="#sceneChange" prefHeight="25.0" prefWidth="69.0" text="Scene Ch" />
+      <Label layoutX="14.0" layoutY="290.0" prefHeight="17.0" prefWidth="62.0" text="Сумма:">
+         <font>
+            <Font name="Segoe UI" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="330.0" prefHeight="25.0" prefWidth="69.0" text="Внесено:">
+         <font>
+            <Font name="Segoe UI" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="225.0" layoutY="290.0" text="Сдача:">
+         <font>
+            <Font name="Segoe UI" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="lSumm" layoutX="90.0" layoutY="290.0" prefHeight="25.0" prefWidth="118.0" text="0.0">
+         <font>
+            <Font name="Segoe UI Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="lPayed" layoutX="90.0" layoutY="330.0" prefHeight="17.0" prefWidth="98.0" text="0.0">
+         <font>
+            <Font name="Segoe UI Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="lBackSumm" layoutX="319.0" layoutY="290.0" prefHeight="25.0" prefWidth="107.0" text="0.0">
+         <font>
+            <Font name="Segoe UI Bold" size="16.0" />
+         </font>
+      </Label>
+      <TextField fx:id="inputField" layoutX="14.0" layoutY="257.0" onAction="#doPay" prefHeight="25.0" prefWidth="172.0" />
+      <Button layoutX="197.0" layoutY="257.0" mnemonicParsing="false" onAction="#doPay" prefHeight="25.0" prefWidth="78.0" text="Оплатить">
+         <font>
+            <Font size="12.0" />
+         </font></Button>
+      <Label layoutX="225.0" layoutY="330.0" text="Доплатить:">
+         <font>
+            <Font name="Segoe UI" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="lUnpayd" layoutX="319.0" layoutY="330.0" prefHeight="25.0" prefWidth="98.0" text="0.0">
+         <font>
+            <Font name="Segoe UI Bold" size="16.0" />
+         </font>
+      </Label>
+      <Button layoutX="14.0" layoutY="362.0" mnemonicParsing="false" onAction="#processCheck" prefHeight="45.0" prefWidth="118.0" text="Пробить чек">
+         <font>
+            <Font name="Segoe UI" size="13.0" />
+         </font></Button>
+      <Label fx:id="lPayErr" layoutX="14.0" layoutY="227.0" prefHeight="27.0" prefWidth="172.0" textFill="#ee0202">
+         <font>
+            <Font name="Segoe UI Bold" size="18.0" />
+         </font>
+      </Label>
+      <TextArea fx:id="logWindow" editable="false" layoutX="614.0" layoutY="418.0" prefHeight="172.0" prefWidth="622.0" AnchorPane.rightAnchor="14.0">
+         <font>
+            <Font name="Segoe UI" size="13.0" />
+         </font></TextArea>
+      <Button layoutX="586.0" layoutY="561.0" mnemonicParsing="false" onAction="#clearLog" prefHeight="11.0" prefWidth="4.0" text="x" />
+      <Button layoutX="98.0" layoutY="48.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#showSearchWindow" prefHeight="25.0" prefWidth="69.0" text="Найти">
+         <font>
+            <Font name="Segoe UI" size="12.0" />
+         </font></Button>
+      <Button layoutX="21.0" layoutY="48.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addItemToCheck" prefHeight="25.0" prefWidth="69.0" text="Добавить">
+         <font>
+            <Font name="Segoe UI" size="12.0" />
+         </font></Button>
+      <Button layoutX="21.0" layoutY="113.0" mnemonicParsing="false" onAction="#clearCheck" prefHeight="25.0" prefWidth="69.0" text="Очистить">
+         <font>
+            <Font name="Segoe UI" size="12.0" />
+         </font></Button>
+      <Button layoutX="21.0" layoutY="80.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#delItem" prefHeight="25.0" prefWidth="69.0" text="Удалить">
+         <font>
+            <Font name="Segoe UI" size="12.0" />
+         </font></Button>
+      <MenuBar layoutX="15.0" layoutY="14.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Учет">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#editItemsMenu" text="Редактор товара" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <Button layoutX="174.0" layoutY="48.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#showReclamationWindow" prefHeight="25.0" prefWidth="69.0" text="Возврат">
+         <font>
+            <Font name="Segoe UI" size="13.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

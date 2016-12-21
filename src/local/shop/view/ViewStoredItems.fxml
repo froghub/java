@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="320.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="local.shop.controller.ViewStoredItemsController">
+   <children>
+      <TextField fx:id="searchText" layoutX="16.0" layoutY="32.0" prefHeight="25.0" prefWidth="185.0">
+         <font>
+            <Font name="Segoe UI" size="13.0" />
+         </font></TextField>
+      <Button layoutX="210.0" layoutY="32.0" mnemonicParsing="false" onAction="#search" prefHeight="25.0" prefWidth="69.0" text="Найти">
+         <font>
+            <Font name="Segoe UI" size="13.0" />
+         </font></Button>
+      <TableView fx:id="items" layoutX="16.0" layoutY="62.0" prefHeight="213.0" prefWidth="568.0">
+        <columns>
+          <TableColumn fx:id="id" prefWidth="49.0" text="ID" />
+          <TableColumn fx:id="name" prefWidth="388.0" text="Наименование" />
+            <TableColumn fx:id="price" prefWidth="67.0" text="Цена" />
+            <TableColumn fx:id="countStored" prefWidth="73.0" text="Остаток" />
+        </columns>
+      </TableView>
+      <Button layoutX="483.0" layoutY="281.0" mnemonicParsing="false" onAction="#close" prefHeight="25.0" prefWidth="102.0" text="Закрыть">
+         <font>
+            <Font name="Segoe UI" size="13.0" />
+         </font></Button>
+      <Label layoutX="16.0" layoutY="14.0" prefHeight="17.0" prefWidth="115.0" text="Наименование:">
+         <font>
+            <Font name="Segoe UI" size="13.0" />
+         </font></Label>
+      <Label fx:id="lFound" layoutX="310.0" layoutY="36.0" prefHeight="17.0" prefWidth="115.0" text="Найдено:">
+         <font>
+            <Font name="Segoe UI" size="13.0" />
+         </font></Label>
+   </children>
+</AnchorPane>
