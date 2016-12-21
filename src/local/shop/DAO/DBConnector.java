@@ -1,12 +1,11 @@
 package local.shop.DAO;
 
 import local.shop.DAO.ProductDAO;
-import local.shop.DAO.CheckDAO;
+import local.shop.DAO.jdbc.CheckDAO;
 import local.shop.DAO.DAO;
 import local.shop.DAO.jdbc.ItemDAO;
 import local.shop.model.deprecated.ItemCheck;
 import local.shop.model.deprecated.ShopItem;
-import local.shop.model.entity.ChecksEntity;
 import local.shop.model.entity.ProductsEntity;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -45,7 +44,7 @@ public class DBConnector {
     public static DAO<ShopItem> getItemDAO() {
          return new ItemDAO();
      }
-    public static DAO<ChecksEntity> getCheckDAO() {
+    public static DAO<ItemCheck> getCheckDAO() {
         return new CheckDAO();
     }
     public static DAO<ProductsEntity> getProductDAO() { return new ProductDAO(); }
