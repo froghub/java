@@ -5,39 +5,38 @@ import local.shop.DAO.DBConnector;
 import local.shop.exceptions.NotEnoughItemsOnStore;
 import local.shop.model.deprecated.ItemCheck;
 import local.shop.model.entity.ChecksEntity;
+import local.shop.model.entity.ProductsEntity;
+import local.shop.model.entity.SolditemsEntity;
 
 public class CheckUtil {
 
 
     public static boolean processCheck(ChecksEntity check) throws NotEnoughItemsOnStore {
 
-      /*  for (ItemCheck.Entry entry : check.getItems()) {
-            ShopItem checkable = DBConnector.getItemDAO().selectById(entry.getItem());
-            int requiredCount = entry.getCount();
-            int storedCount = checkable.getCountStored();
+       for (SolditemsEntity checkEntry : check.getItems()) {
+            ProductsEntity checkable = DBConnector.getProductDAO().selectById(checkEntry.getProduct());
+            int requiredCount = checkEntry.getCount();
+            int storedCount = checkable.getCount();
             if (requiredCount > storedCount) throw new NotEnoughItemsOnStore(checkable);
             int newStoredCount = storedCount - requiredCount;
-            entry.getItem().setCountStored(newStoredCount);
+            checkEntry.getProduct().setCount((short)newStoredCount);
         }
 
         /// ВНЕСЕНИЕ ЧЕКА В БД
-        if (DBConnector.getCheckDAO().insert(check) != null) {
-            for (ItemCheck.Entry entry : check.getItems()) {
-                DBConnector.getItemDAO().update(entry.getItem());
-            }
+         check = DBConnector.getCheckDAO().insert(check);
 
-            return true;
-        }*/
-
-        return false;
+           if(check.getId()!=0) return true;
+            return false;
     }
 
-    public static ItemCheck loadCheckData(ItemCheck check) {
+    public static ChecksEntity loadCheckData(ChecksEntity check) {
         return DBConnector.getCheckDAO().selectById(check);
     }
 
-    public static void reclamationUpdate(ItemCheck check) {
-        if(DBConnector.getCheckDAO().update(check)){
+    public static void reclamationUpdate(ChecksEntity check) {
+
+
+        /*if(DBConnector.getCheckDAO().update(check)){
             for(ItemCheck.Entry entry : check.getItems()){
                 if (entry.getCount()!=entry.getItem().getCountStored()){
                     //Неверное количество. Необходимо актуальное из БД
@@ -47,12 +46,12 @@ public class CheckUtil {
                     entry.getItem().setCountStored(newCountStored);
                     DBConnector.getItemDAO().update(entry.getItem());
                 }
-            }
+            }*/
         }
-        else {
+       /* else {
             DBConnector.getCheckDAO().delete(check);
             DBConnector.getCheckDAO().insert(check);
-        }
+        } */
     }
 
 
