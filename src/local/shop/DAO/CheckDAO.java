@@ -29,7 +29,7 @@ public class CheckDAO implements DAO<ChecksEntity> {
     @Override
     public ChecksEntity insert(ChecksEntity item) {
         Session session = DBConnector.getSessionFactory().openSession();
-        session.save(item);
+        item.setId((int)session.save(item));
 
         return item;
     }
