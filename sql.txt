@@ -1,0 +1,26 @@
+ --не актуальны (21.12)
+
+CREATE SCHEMA `shop` DEFAULT CHARACTER SET utf8 ;
+
+use shop;
+
+create table items (id int not null auto_increment,
+name varchar(128) not null,
+price decimal(10,2) not null,
+count smallint not null,
+primary key(id)
+);
+
+
+create table checks (id int not null auto_increment,
+total decimal(10,2) not null,
+date timestamp not null,
+primary key(id));
+
+create table solditems (id int not null auto_increment,
+checkid smallint not null,
+itemid int not null,
+count smallint not null,
+currentprice decimal(10,2) not null,
+date timestamp not null,
+primary key(id));
