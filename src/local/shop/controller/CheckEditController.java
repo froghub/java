@@ -1,7 +1,11 @@
 package local.shop.controller;
 
 
+import javafx.beans.property.SimpleFloatProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -10,22 +14,24 @@ import javafx.stage.Stage;
 import local.shop.controller.CheckUtil;
 import local.shop.controller.ModalWinController;
 import local.shop.model.deprecated.ItemCheck;
+import local.shop.model.entity.ChecksEntity;
+import local.shop.model.entity.SolditemsEntity;
 
 public class CheckEditController implements ModalWinController{
     private Stage stage;
-    private static ItemCheck sourceCheck;
+    private static ChecksEntity sourceCheck;
 
 
     @FXML
-    private TableView<ItemCheck.Entry> checkItems;
+    private TableView<SolditemsEntity> checkItems;
     @FXML
-    private TableColumn<ItemCheck.Entry , Integer> id;
+    private TableColumn<SolditemsEntity, Integer> id;
     @FXML
-    private TableColumn<ItemCheck.Entry, String> name;
+    private TableColumn<SolditemsEntity, String> name;
     @FXML
-    private TableColumn<ItemCheck.Entry , Integer> count;
+    private TableColumn<SolditemsEntity , Integer> count;
     @FXML
-    private TableColumn<ItemCheck.Entry , Float> price;
+    private TableColumn<SolditemsEntity , Float> price;
     @FXML
     private Label sumLabel;
 
@@ -34,10 +40,11 @@ public class CheckEditController implements ModalWinController{
     public void initialize() {
         sumLabel.setText("");
 
-        id.setCellValueFactory(cellData->(ObservableValue)cellData.getValue().getItem().idProperty());
-        name.setCellValueFactory(cellData->(ObservableValue)cellData.getValue().getItem().nameProperty());
-        count.setCellValueFactory(cellData->(ObservableValue)cellData.getValue().countProperty());
-        price.setCellValueFactory(cellData->(ObservableValue)cellData.getValue().getItem().priceProperty());
+        id.setCellValueFactory(cellData -> ((ObservableValue)new SimpleIntegerProperty(cellData.getValue().getProduct().getId())));
+        name.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getProduct().getName()));
+        price.setCellValueFactory(cellData -> ((ObservableValue)new SimpleFloatProperty(cellData.getValue().getProduct().getPrice())));
+        count.setCellValueFactory(cellData -> ((ObservableValue) new SimpleIntegerProperty(cellData.getValue().getCount())));
+
         initTable();
     }
 
@@ -45,16 +52,18 @@ public class CheckEditController implements ModalWinController{
     @FXML
     public void incItem(){
         int index = checkItems.getSelectionModel().getSelectedIndex();
-        if (index>=0&&sourceCheck.getItems().get(index).getCount()<sourceCheck.getItems().get(index).getItem().getCountStored()){
-            sourceCheck.getItems().get(index).addCount(1);
+        int count = sourceCheck.getItems().get(index).getCount();
+        if (index>=0&&count<sourceCheck.getItems().get(index).getProduct().getCount()){
+            sourceCheck.getItems().get(index).setCount((short)++count);
         }
         checkItems.refresh();
     }
     @FXML
     public void decItem(){
         int index = checkItems.getSelectionModel().getSelectedIndex();
-        if (index>=0&&sourceCheck.getItems().get(index).getCount()>0){
-            sourceCheck.getItems().get(index).reduceCount(1);
+        int count = sourceCheck.getItems().get(index).getCount();
+        if (index>=0&&count>0){
+            sourceCheck.getItems().get(index).setCount((short)--count);
         }
         checkItems.refresh();
     }
@@ -70,14 +79,14 @@ public class CheckEditController implements ModalWinController{
         stage.close();
     }
 
-    public static void setSourceCheck(ItemCheck check){
+    public static void setSourceCheck(ChecksEntity check){
         sourceCheck = check;
     }
 
     public void initTable() {
 
         sourceCheck = CheckUtil.loadCheckData(sourceCheck);
-        checkItems.setItems(sourceCheck.getItems());
+        checkItems.setItems(sourceCheck.toObservableList());
     }
     @Override
     public void setStage(Stage stage) {
