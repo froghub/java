@@ -47,9 +47,9 @@ public class TradeWindowController {
     @FXML
     public void initialize() {
 
-        id.setCellValueFactory(cellData -> ((ObservableValue)new SimpleIntegerProperty(cellData.getValue().getProduct().getId())));
+        id.setCellValueFactory(cellData -> ((ObservableValue) new SimpleIntegerProperty(cellData.getValue().getProduct().getId())));
         name.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getProduct().getName()));
-        price.setCellValueFactory(cellData -> ((ObservableValue)new SimpleFloatProperty(cellData.getValue().getProduct().getPrice())));
+        price.setCellValueFactory(cellData -> ((ObservableValue) new SimpleFloatProperty(cellData.getValue().getProduct().getPrice())));
         count.setCellValueFactory(cellData -> ((ObservableValue) new SimpleIntegerProperty(cellData.getValue().getCount())));
 
     }
@@ -139,8 +139,6 @@ public class TradeWindowController {
         if (items.getItems().size() > 0) {
             checkSumm = activeCheck.getTotal();
             lSumm.setText(String.format("%.2f", checkSumm));
-
-
             if (checkPayed >= 0) {
                 lPayed.setText(checkPayed + "");
                 if (checkSumm > checkPayed) {
@@ -159,7 +157,6 @@ public class TradeWindowController {
             lPayed.setText("0.0");
             lSumm.setText("0.0");
         }
-
     }
 
     @FXML
@@ -169,7 +166,7 @@ public class TradeWindowController {
 
     @FXML
     public void sceneChange() {
-      //  MainWindow.getInstance().showAnotherScene();
+        //  MainWindow.getInstance().showAnotherScene();
     }
 
     @FXML
@@ -181,9 +178,10 @@ public class TradeWindowController {
     public void editItemsMenu() {
         MainWindow.getInstance().showItemsEditorWindow();
     }
+
     @FXML
     public void showReclamationWindow() {
-        MainWindow.getInstance().initModalWindow("CheckViewWindow.fxml","Выбор чека для возврата",MainWindow.getInstance().getMainStage());
+        MainWindow.getInstance().initModalWindow("CheckViewWindow.fxml", "Выбор чека для возврата", MainWindow.getInstance().getMainStage());
     }
 }
 
