@@ -1,6 +1,9 @@
 package local.shop.controller;
 
 
+import javafx.beans.property.SimpleFloatProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -11,29 +14,27 @@ import local.shop.DAO.DBConnector;
 import local.shop.MainWindow;
 import local.shop.model.deprecated.ArchivedCheck;
 import local.shop.model.deprecated.ItemCheck;
+import local.shop.model.entity.ChecksEntity;
 
 public class CheckViewController implements ModalWinController {
     Stage stage;
 
 
     @FXML
-    private TableView<ItemCheck> items;
+    private TableView<ChecksEntity> items;
     @FXML
-    private TableColumn<ArchivedCheck, Integer> id;
+    private TableColumn<ChecksEntity, Integer> id;
     @FXML
-    private TableColumn<ArchivedCheck, Float> total;
+    private TableColumn<ChecksEntity, Float> total;
     @FXML
-    private TableColumn<ArchivedCheck, String> date;
+    private TableColumn<ChecksEntity, String> date;
 
     @FXML
     public void initialize() {
-
-
-        id.setCellValueFactory(cellData -> ((ObservableValue) cellData.getValue().idProperty()));
-        total.setCellValueFactory(cellData ->(ObservableValue) cellData.getValue().sumProperty());
-        date.setCellValueFactory(cellData ->   cellData.getValue().dateProperty());
+        id.setCellValueFactory(cellData -> ((ObservableValue) new SimpleIntegerProperty(cellData.getValue().getId())));
+        total.setCellValueFactory(cellData ->(ObservableValue) new SimpleFloatProperty(cellData.getValue().getTotal()));
+        date.setCellValueFactory(cellData ->   new SimpleStringProperty(""+cellData.getValue().getDate()));
         loadTable();
-
     }
 
 
